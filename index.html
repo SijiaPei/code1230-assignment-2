@@ -1,97 +1,212 @@
 <!DOCTYPE html>
 <html>
+<title>Data Analysis</title>
 <head>
-<title>MyMap</title>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
-<!-- Custom Theme files -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/demo1.css" rel="stylesheet" type="text/css" media="all" />
-<!-- Custom Theme files -->
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--webfont-->
-<link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,300,700' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-		<!-- JavaScript includes -->
-		<script src="js/ipresenter.packed.js"></script>
-		<script>
-			$(document).ready(function(){
-				$('#ipresenter').iPresenter({
-					timerPadding: -1,
-					controlNav: true,
-					controlNavThumbs: true,
-					controlNavNextPrev: false
-				});
-			});
-		</script>
-	    <script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
-				});
-			});
-		</script>
+<link href="C:\Users\it\Documents\GitHub\code1230-assignment-2\css\w3.css" rel="stylesheet">
+<link href="C:\Users\it\Documents\GitHub\code1230-assignment-2\css\leaflet.css" type="text/css" rel=stylesheet>
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.css' rel='stylesheet' />
+<script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\jquery-3.2.1.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="C:\Users\it\Documents\GitHub\code1230-assignment-2\css\stylesheet.css" type="text/css" rel=stylesheet>
 </head>
+
 <body>
-	<!-- header-section-starts -->
-	<div class="user-desc">
-		</div>
-		<div class="header">
-		<div class="header-top">
-			<div class="container">
-				<div class="top-menu">
-				  <span class="menu"> </span>
-					<ul class="cl-effect-15">
-						<li><a class="active" href="index.html">HOME</a></li>
-						<li><a href="map 1.html" data-hover="map 1">map 1</a></li>
-						<li><a href="map 2.html" data-hover="map 2">map 2</a></li>
-						<li><a href="map 3.html" data-hover="map 3">map 3</a></li>
-						<li><a href="map 4.html" data-hover="map 4">map 4</a></li>
-					</ul>
-				</div>
-				 <!--script-nav-->
-				<script>
-				$("span.menu").click(function(){
-				$(".top-menu ul").slideToggle("slow" , function(){
-				});
-				});
-				</script>
-				<!--script-nav-->
-				<div class="clearfix"></div>
-			</div>
-		</div>
-			<div class="slider">
-		<div id="ipresenter">
-			
 
-			
+<!--Navigation Bar-->
+<section id='header'>
+  <div class="nav-header w3-top">
+    <div class="w3-bar w3-white w3-wide w3-padding w3-card-2" id="myNavbar">
+      <a href="homepage.html" class="w3-bar-item w3-button"><b>CODE1230</b> URBAN DATA</a>
+      <div class="w3-right">
+        <a id='chart-load' href="#trend" class="w3-bar-item w3-button">Trend</a>
+        <a id='pie-load' href="#statistics" class="w3-bar-item w3-button">Statistics</a>
+        <a href="#invest" class="w3-bar-item w3-button">Investigation</a>
+        <a href="#proposal" class="w3-bar-item w3-button">Proposal</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-			
-		</div>
-	</div>
-	</div>
-	<script type="text/javascript">
+<!-- Data Description -->
+<div class='w3-center w3-padding-16'>
+  <h1>AGE BY SEX</h1>
+</div>
+<div class='texthead text'>
+  <p>Putting the age data on a map allows us to see the age distribution of men and women in New South Wales, which eventually leads me to problems between regions.<br> 
+    I find their differences by comparing the distribution of men and women in all ages. Our data are from the Australian Bureau of statistics, working with other sources and working in QGIS.</p>
+</div>
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-32024393-1']);
-  _gaq.push(['_trackPageview']);
+    <!--Trend-->
+    <div id='trend' class='chart-container fade'>
+      <div class='row'>
+        <h1 class='w3-border-bottom w3-border-light-grey w3-padding-16'>Trend</h1>
+        <div class='col-sm-8'>
+          <div id='line'></div>
+        </div>
+    <!--Video of Change in Trend -->
+<div id='#' class='chart-container fade'>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+    <div class='row'>
+      <div class='col-sm-4 text'>
+        <p>Throughout the decades it is very important to know the different in habits for both males and females as seen from the data.
+          These trends can be easily observable through the large spikes of sharp blues on the female maps that represents
+          high amounts of graduates, whilst the male are maps dominated with a lighter blue
+          (representing a mid-range amount of graduates)</p>
+          <br><b>Results</b></br>
+          <p>It shows that Males often have a lot of people to graduate from (explainable by the diverse amounts of schools in NSW for boys),
+          however, each location produces a either a constant or a lower than female amount of graduates.</p>
 
-</script>
-<!-- header-section-ends -->
-<!-- content-section-starts -->
-	<!-- footer-section-ends -->
+          <br><p>Contrastingly females, although have lesser locations to graduate from, do graduate in large batches from each place.
+            Essentially, Males represent quantity, whilst females represents quality.
 
+
+
+      </div>
+    <div class='col-sm-8 text video'>
+        <video width=100% autoplay loop id="video">
+        <source src="C:\Users\it\Documents\GitHub\code1230-assignment-2\video\2016M.mp4" type="video/mp4" />
+        </video>
+        <br>
+        <video width=100% autoplay loop id="video">
+          <source src="C:\Users\it\Documents\GitHub\code1230-assignment-2\video\2016F.mp4" type="video/mp4" />
+          </video>
+    </div>
+  </div>
+</div>
+
+  <!--Pie chart -->
+<div id='statistics' class='chart-container fade'>
+  <div class='row'>
+    <h1 class='w3-border-bottom w3-border-light-grey w3-padding-32'>Statistics</h1>
+    <div class="row content">
+      <div class="col-sm-4 w3-middle-right text">
+        <p>The pie graph displays the comparison of the total number of female and male graduates across the state in all age.
+          Interestingly,the NSW population of the male to female ratio is not that large of a difference.
+          There are currently 3 369 591 males and 3 404 658 females in NSW, providing the ratio of 1:1.
+          Hence, this pie chart can be conclusive that females have a higher success in education.</p>
+          <br><img src="ratio.png" width='75%' ><br>
+       </div>
+      <div class="col-sm-8 text">
+        <div id='pie' /></div>
+      </div>
+    </div>
+</div>
+</div>
+
+<!-- Investigation -->
+<div id='invest' class='map-container fade' >
+  <div class='row'>
+    <h1 class='w3-border-bottom w3-border-light-grey w3-padding-32'>Investigation</h1>
+    <div class='col-sm-8'>
+      <div id='map2'></div>
+        <div class="row">
+          <div class="col-sm-6 text" style="background-color:#DC381F;">Red = Female School</div>
+          <div class="col-sm-6 text" style="background-color:#F88158;">Orange = Male School</div>
+        </div>
+      </div>
+
+    <div class='col-sm-4 text video'>
+       <p>It was evident in the choropleth map that the high graduate rates are seen mostly in
+       North Sydney and the Sydney CBD region. We have decided to look into an investigation whether
+     the top 10 girls and boys school have an impact on graduation rates.</p>
+
+
+           <video width=100% autoplay loop id="video">
+           <source src="latte.mp4" type="video/mp4" />
+           </video>
+           <div class='w3-center'><i><font size="1.5">Latte Line</font></i></div>
+      <p>The Latte Line perfectly divides the dark blue and light blue choropleth where the dark blue represents
+        high graduate rate. We then further investigate whether the schools above the Latte Line has an effect on
+        graduation rate</p>
+     <br><b>Results</b></br>
+     <p>From the source <i>business insider</i>, all top 10 high schools are non-Government,
+       independent school with fee starting from $21 000. Majority of the schools are located
+       in North Sydney, Inner City and Inner West.</p>
+
+
+    </div>
+  </div>
+</div>
+
+<!-- Proposal -->
+<div id='proposal' class='chart-container fade' >
+  <div class='row'>
+    <h1 class='w3-border-bottom w3-border-light-grey w3-padding-32'>Proposal</h1>
+      <div class='col-sm-6 text'>
+      <h4><b>Conclusion</b></h4>
+      <p> The analysis of high school graduates rate by Age and Gender data has significantly alters our perspective
+    on the urban space of NSW, focusing on Sydney. We have explored the change in education over a decade through
+    different age group (from 15-85+ years). From the observation, there has certainly been a fluctuation in NSW
+    education with possible factors including the cancellation of School Certificate (completed in year 10),
+    not enough funding <i><a href="http://www.smh.com.au/national/education/why-is-australias-education-system-going-backwards-20161208-gt6van.html">
+      (Source: Sydney Morning Herald)</a></i>.</p>
+
+      <p>Furthermore, the gender analysis can be done through the comparision of male and female graduation rate. This correlates with the
+        ratio of male:female population in NSW.
+      </p>
+
+      <p>Our main focus investigation has drawn to the attention of the Latte line,
+        the notional line dividing Sydney's affluent north-east from the less affluent south-west.
+        Through identifying the top 10 high school in NSW for both male and female, the list has shown that non-Government schools
+        (private schools) are likely to be above the Latte line. From this observation, there is a clear correlation between
+        HSC results and location.</p>
+
+        <br><h4><b>Proposal</b></h4></br>
+        <p>From the visual map data, our current graduation layout stable for most areas.
+          However, for some areas such as the South West, their amount of graduates is lacking compare from the other locations.
+          This can be seen problematic as family in the South-West would have to travel, or migrate, to the North for better education,
+          which can potentially reduce the flexibility of lifestyle.</p>
+          <p>From the graphical analysis of the data, it is evident that in the previous 2 years we have begun decreasing once more in graduation rate
+            (both females and males) even though prior to this, we were on a steady increase.
+            This proposes that the education system needs to be modernised or modified, as that different locations are lacking schools to
+            cater enough students. </p>
+          </div>
+          <div class='col-sm-6 text' w3-left>
+          <p>On the positive side, it is good to see that there are more female graduates whilst also there being more female population,
+            hence representing that both male and female parties are traveling on par in graduates. </p>
+
+            <p>One change that could be beneficial, is the introduction of more female schools as they currently have low amounts of schools,
+              hence such high concentrations of graduates from singular locations, in other words,
+              giving them more freedom in choice in choosing schools. </p>
+
+            <p>Finally, from the investigation of locations of top 10 schools in NSW and where the latte line is,
+              it is clear to see that the locations of private schools are often where the highest amount of graduates are.
+              This means that private’s schools often have a large contribution to the success of the quantity of graduates.
+              Hence a good change to benefit NSW is to cleverly utilises the space to spread out and create more private schools
+              around the state, in hope that it would raise the average amount of graduates. </p>
+
+            <p>Regarding the context of different locations, it is understandable that the average income of families will vary
+              hence affecting the accessibility of enrolling into a private school. Hence the lowering of private school fees is a
+              very reasonable proposal to be changed and lightened.</p>
+            </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\linegraph.js"></script>
+    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\piegraph.js"></script>
+    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\fade.js"></script>
+    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\jquery-3.2.1.min.js"></script>
+    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\leaflet.js"></script>
+    <!-- Dataset -->
+    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\male15_19.js"></script>
+    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\mapscript.js"></script>
+    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\markermap.js"></script>
 </body>
 </html>

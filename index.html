@@ -1,212 +1,313 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<title>Data Analysis</title>
 <head>
-<meta charset="utf-8">
+<title>MyMap</title>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!---- start-smoth-scrolling---->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+			    <script type="text/javascript">
+					jQuery(document).ready(function($) {
+						$(".scroll").click(function(event){		
+							event.preventDefault();
+							$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+						});
+					});
+				</script>
+<!---- start-smoth-scrolling---->
+ <!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="C:\Users\it\Documents\GitHub\code1230-assignment-2\css\w3.css" rel="stylesheet">
-<link href="C:\Users\it\Documents\GitHub\code1230-assignment-2\css\leaflet.css" type="text/css" rel=stylesheet>
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.css' rel='stylesheet' />
-<script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\jquery-3.2.1.min.js"></script>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</script>
+<!----webfonts---->
+<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900' rel='stylesheet' type='text/css'>
+<!----//webfonts---->
+	<!----- start-Share-instantly-slider---->
+					 <!-- Prettify -->
+						<link href="css/owl.carousel.css" rel="stylesheet">
+					    <script src="js/owl.carousel.js"></script>
+					    <script>
+						    $(document).ready(function() {
+						      $("#owl-demo , #owl-demo1").owlCarousel({
+						        items : 1,
+						        lazyLoad : true,
+						        autoPlay : true,
+						      });
+						    });
+					    </script>
+					    <script>
+						    $(document).ready(function() {
+						      $("#owl-demo3").owlCarousel({
+						        items : 4,
+						        lazyLoad : true,
+						        autoPlay : true,
+						        navigation: false,
+						        pagination: false,
+						      });
+						    });
+					    </script>
+					<!----- //End-Share-instantly-slider---->
+			 
+					
+				<!----start-top-nav-script---->
+		<script>
+			$(function() {
+				var pull 		= $('#pull');
+					menu 		= $('nav ul');
+					menuHeight	= menu.height();
+				$(pull).on('click', function(e) {
+					e.preventDefault();
+					menu.slideToggle();
+				});
+				$(window).resize(function(){
+	        		var w = $(window).width();
+	        		if(w > 320 && menu.is(':hidden')) {
+	        			menu.removeAttr('style');
+	        		}
+	    		});
+			});
+		</script>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link href="C:\Users\it\Documents\GitHub\code1230-assignment-2\css\stylesheet.css" type="text/css" rel=stylesheet>
+
+		<!----//End-top-nav-script---->
+<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+		    <script type="text/javascript">
+			    $(document).ready(function () {
+			        $('#horizontalTab').easyResponsiveTabs({
+			            type: 'default', //Types: default, vertical, accordion           
+			            width: 'auto', //auto or any width like 600px
+			            fit: true   // 100% fit in a container
+			        });
+			    });
+			   </script>
+
+
+		<script type="text/javascript">
+
+			function showDivSydney(){
+				$("#sydney").css("display","block");
+				$("#tab_sydney").css("background","#CFCFCF");
+				$("#tab_tokyo").css("background","none");
+				$("#tokyo").css("display","none");
+				showDivSydney_Impact();	
+			}
+
+			function showDivSydney_Impact(){
+				$("#sydney_impact").css("display","block");
+				$("#sydney_back").css("display","none");
+				$("#tab_sydney_impact").css("background","#CFCFCF");
+				$("#tab_sydney_back").css("background","none");
+
+			}
+
+			function showDivSydney_Back(){
+				$("#sydney_impact").css("display","none");
+				$("#sydney_back").css("display","block");
+				$("#tab_sydney_back").css("background","#CFCFCF");
+				$("#tab_sydney_impact").css("background","none");
+
+			}
+
+			function showDivTokyo(){
+				$("#sydney").css("display","none");
+				$("#tokyo").css("display","block");
+				$("#tab_sydney").css("background","none");
+				$("#tab_tokyo").css("background","#CFCFCF");
+				showDivTokyo_Impact();
+			}
+
+			function showDivTokyo_Impact(){
+				$("#tokyo_impact").css("display","block");
+				$("#tab_tokyo_impact").css("background","#CFCFCF");
+				$("#tab_tokyo_back").css("background","none");
+				$("#tokyo_back").css("display","none");
+			}
+
+			function showDivTokyo_Back(){
+				$("#tokyo_back").css("display","block");
+				$("#tab_tokyo_back").css("background","#CFCFCF");
+				$("#tab_tokyo_impact").css("background","none");
+				$("#tokyo_impact").css("display","none");
+			}
+		</script>			   
 </head>
-
 <body>
+	<div style="position:relative；margin：0px">
+		<div class="header" style="position:fixed;margin-top: 0px">
+			<div class="container">
+				<div class="logo">
+					<h3 class="m_2"><b>MyMap</b></h3>
+				</div>
+				<nav class="top-nav">
+					<ul class="top-nav">
+						<li class="page-scroll"><a href="#introduction" class="scroll">Home <span> </span></a></li>
+						<li class="page-scroll"><a href="#changes" class="scroll">Analysis1<span> </span></a></li>
+						<li class="page-scroll"><a href="#different" class="scroll">Analysis2<span> </span></a></li>
+						<li class="page-scroll"><a href="#summary" class="scroll">Summary<span> </span></a></li>						
+					</ul>
+					<a href="#" id="pull"><img src="images/nav-icon.png" title="menu" /></a>
+				</nav>			
+			</div>
+		</div>
+	
+		<div class="main" id="home" style="padding-top: 30px"></div>
+	
+	<!-- part1: Introduction   -->					
+		<div id="introduction" style="margin-top:30px" class="row feature">
+				<h3>Introduction</h3>
+				<p>Putting the age data on the map, we can see the age distribution of men and women in New South Wales, which eventually leads to problems between regions. By comparing data from men and women of all ages, I found their differences. Our data are from the Australian Bureau of statistics, working with other sources and working in QGIS.</p>			
+		        <br>
+		</div>
+        
+	
+		
+		<!-- part2: changes  -->
+		<div  id="changes">
+					<div class="border" ></div>
+					<div class="row feature">
+									<h3>Populatiion changes in dfifferent regions of NSW by age</h3>
+									<p>I classify the data by age, and I divide them into 2011 and 2016.The deeper the color area, the greater the number of people in the area. So that we can visually see the demographic changes in different regions over the years as we grow older.</p>
+					</div>		
 
-<!--Navigation Bar-->
-<section id='header'>
-  <div class="nav-header w3-top">
-    <div class="w3-bar w3-white w3-wide w3-padding w3-card-2" id="myNavbar">
-      <a href="homepage.html" class="w3-bar-item w3-button"><b>CODE1230</b> URBAN DATA</a>
-      <div class="w3-right">
-        <a id='chart-load' href="#trend" class="w3-bar-item w3-button">Trend</a>
-        <a id='pie-load' href="#statistics" class="w3-bar-item w3-button">Statistics</a>
-        <a href="#invest" class="w3-bar-item w3-button">Investigation</a>
-        <a href="#proposal" class="w3-bar-item w3-button">Proposal</a>
-      </div>
-    </div>
-  </div>
-</section>
+					<div class="row feature">										
+					                    <div class="left_div">
+											<h3 class="m_7">2011</h3>
+										
+											<video width=100% style="border:1px solid #CFCFCF" autoplay="autoplay" loop="loop" id="video" src="video/2011.mp4" type="video/mp4" />
+											</video>
+										</div>
+										
+										<div class="right_div" >
+										    <br>
+										         <p>We can observe that in 2011, generally between 0-19 and 40-59 years old, the number of male and female is large, the number of people over 80 years old is always the smallest. The largest number of people live in the center of the city, perhaps because the city center is so prosperous that more people choose to live here. In the south-central and west-oriented areas, no one has ever lived, probably because the area is not developed or suburban, so no one chooses to live here. As age increases, most people migrate eastward to the north.</p>
 
-<!-- Data Description -->
-<div class='w3-center w3-padding-16'>
-  <h1>AGE BY SEX</h1>
-</div>
-<div class='texthead text'>
-  <p>Putting the age data on a map allows us to see the age distribution of men and women in New South Wales, which eventually leads me to problems between regions.<br> 
-    I find their differences by comparing the distribution of men and women in all ages. Our data are from the Australian Bureau of statistics, working with other sources and working in QGIS.</p>
-</div>
+										</div>
 
-    <!--Trend-->
-    <div id='trend' class='chart-container fade'>
-      <div class='row'>
-        <h1 class='w3-border-bottom w3-border-light-grey w3-padding-16'>Trend</h1>
-        <div class='col-sm-8'>
-          <div id='line'></div>
-        </div>
-    <!--Video of Change in Trend -->
-<div id='#' class='chart-container fade'>
+					</div>
 
-    <div class='row'>
-      <div class='col-sm-4 text'>
-        <p>Throughout the decades it is very important to know the different in habits for both males and females as seen from the data.
-          These trends can be easily observable through the large spikes of sharp blues on the female maps that represents
-          high amounts of graduates, whilst the male are maps dominated with a lighter blue
-          (representing a mid-range amount of graduates)</p>
-          <br><b>Results</b></br>
-          <p>It shows that Males often have a lot of people to graduate from (explainable by the diverse amounts of schools in NSW for boys),
-          however, each location produces a either a constant or a lower than female amount of graduates.</p>
+									
+									
+					<div class="row feature">
+										<div class="left_div">
+											<h3 class="m_7">2016</h3>
+											<video width=100% autoplay="autoplay" style="border:1px solid #CFCFCF" loop="loop" id="video" src="video/2016.mp4" type="video/mp4" />
+											</video>
+										</div>
+                                        <div class="right_div">
+										    <br>
+										    <p>We can observe that in 2016, the population aged 20-39 and over is generally smaller, while the number of other age groups are larger. In the south-central region, where there were no inhabitants, the number of people in this area increased dramatically in 2016, probably because the area was developed, so many people chose to move here. There are still a lot of people in the middle, but not as many as in 2011, and maybe other places are becoming comfortable, so people choose to go somewhere else. With the increase of age, more and more people emigrate to the East.</p>																																																																																																																												
+                                        </div>										
+					</div>
+									                                    
+									
 
-          <br><p>Contrastingly females, although have lesser locations to graduate from, do graduate in large batches from each place.
-            Essentially, Males represent quantity, whilst females represents quality.
+									
 
+									<div class="row feature">
+								     	<div class="left_div">
+											 <br>
+											 <p>In 2016, there were more people of all ages than in 2011, but the gap between them was not very large. And the growth rate varies from age group to age group. Between the first age group and the second age group, the growth rate in 2011 was initially higher than in 2016, but then reversed by 2016. Between the second and third age groups, growth in 2016 was initially higher than in 2011, but then reversed by 2011. Between the third and fifth age groups, the growth rate in 2016 was consistently higher than in 2011. The largest difference is at the age of fourth. Whether in 2016 or 2011, the number of people aged 20-39 is always the most.</p>
+										</div>
+										
+										<div class="right_div">
+											<img  width="100%" src="images/totalpopulationbyage.jpg"  />
+										</div>	
+									</div>
+		</div>
 
+		<!-- part3: different -->
+		<div class="row feature"></div>
+		<div class="border" ></div>	
+		<div id="different">
+					
+						
+								<div class="row feature">
+								
+												<h3>Different between male and female</h3>
+												<p>To study the differences between the number of male and female in different age groups and regions, I made the following map. The red part indicates that there are more female than male in the area, and the orange part indicates that there are more male than female in the area.</p>																																																																																																																												
+											
+								</div>
+								
+								
+								<div class="row feature">
+									      <div>
+												<h3 class="m_7">0-40</h3>
+										  </div>
+										  <div>
+												<div class="left_div">
+                                                  											
+											       <iframe id="map 1" width="100%" height="400px" src="map1/map1.html" frameborder="0" allowfullscreen></iframe>
+												</div>
+												<div class="right_div">	
+												    <iframe id="map 3" width="100%" height="400px" src="map3/map3.html" frameborder="0" allowfullscreen></iframe>
+												</div>
+										  </div>	
+								 </div>
+								 <p>As can be seen from the maps, the number of males aged 0-40 is significantly lower than that of females, but the gap is not very large. There are obvious differences except for some areas in the central and west to south directions. Overall, we can see that women between the ages of 0 and 40 are concentrated in the north, while men between the ages of 0 and 40 are concentrated in the southeast. This may be related to the climate and urban structure of each region, which will lead to differences in the number of men and women.</p>
+										 
+								
+						
 
-      </div>
-    <div class='col-sm-8 text video'>
-        <video width=100% autoplay loop id="video">
-        <source src="C:\Users\it\Documents\GitHub\code1230-assignment-2\video\2016M.mp4" type="video/mp4" />
-        </video>
-        <br>
-        <video width=100% autoplay loop id="video">
-          <source src="C:\Users\it\Documents\GitHub\code1230-assignment-2\video\2016F.mp4" type="video/mp4" />
-          </video>
-    </div>
-  </div>
-</div>
-
-  <!--Pie chart -->
-<div id='statistics' class='chart-container fade'>
-  <div class='row'>
-    <h1 class='w3-border-bottom w3-border-light-grey w3-padding-32'>Statistics</h1>
-    <div class="row content">
-      <div class="col-sm-4 w3-middle-right text">
-        <p>The pie graph displays the comparison of the total number of female and male graduates across the state in all age.
-          Interestingly,the NSW population of the male to female ratio is not that large of a difference.
-          There are currently 3 369 591 males and 3 404 658 females in NSW, providing the ratio of 1:1.
-          Hence, this pie chart can be conclusive that females have a higher success in education.</p>
-          <br><img src="ratio.png" width='75%' ><br>
-       </div>
-      <div class="col-sm-8 text">
-        <div id='pie' /></div>
-      </div>
-    </div>
-</div>
-</div>
-
-<!-- Investigation -->
-<div id='invest' class='map-container fade' >
-  <div class='row'>
-    <h1 class='w3-border-bottom w3-border-light-grey w3-padding-32'>Investigation</h1>
-    <div class='col-sm-8'>
-      <div id='map2'></div>
-        <div class="row">
-          <div class="col-sm-6 text" style="background-color:#DC381F;">Red = Female School</div>
-          <div class="col-sm-6 text" style="background-color:#F88158;">Orange = Male School</div>
-        </div>
-      </div>
-
-    <div class='col-sm-4 text video'>
-       <p>It was evident in the choropleth map that the high graduate rates are seen mostly in
-       North Sydney and the Sydney CBD region. We have decided to look into an investigation whether
-     the top 10 girls and boys school have an impact on graduation rates.</p>
-
-
-           <video width=100% autoplay loop id="video">
-           <source src="latte.mp4" type="video/mp4" />
-           </video>
-           <div class='w3-center'><i><font size="1.5">Latte Line</font></i></div>
-      <p>The Latte Line perfectly divides the dark blue and light blue choropleth where the dark blue represents
-        high graduate rate. We then further investigate whether the schools above the Latte Line has an effect on
-        graduation rate</p>
-     <br><b>Results</b></br>
-     <p>From the source <i>business insider</i>, all top 10 high schools are non-Government,
-       independent school with fee starting from $21 000. Majority of the schools are located
-       in North Sydney, Inner City and Inner West.</p>
-
-
-    </div>
-  </div>
-</div>
-
-<!-- Proposal -->
-<div id='proposal' class='chart-container fade' >
-  <div class='row'>
-    <h1 class='w3-border-bottom w3-border-light-grey w3-padding-32'>Proposal</h1>
-      <div class='col-sm-6 text'>
-      <h4><b>Conclusion</b></h4>
-      <p> The analysis of high school graduates rate by Age and Gender data has significantly alters our perspective
-    on the urban space of NSW, focusing on Sydney. We have explored the change in education over a decade through
-    different age group (from 15-85+ years). From the observation, there has certainly been a fluctuation in NSW
-    education with possible factors including the cancellation of School Certificate (completed in year 10),
-    not enough funding <i><a href="http://www.smh.com.au/national/education/why-is-australias-education-system-going-backwards-20161208-gt6van.html">
-      (Source: Sydney Morning Herald)</a></i>.</p>
-
-      <p>Furthermore, the gender analysis can be done through the comparision of male and female graduation rate. This correlates with the
-        ratio of male:female population in NSW.
-      </p>
-
-      <p>Our main focus investigation has drawn to the attention of the Latte line,
-        the notional line dividing Sydney's affluent north-east from the less affluent south-west.
-        Through identifying the top 10 high school in NSW for both male and female, the list has shown that non-Government schools
-        (private schools) are likely to be above the Latte line. From this observation, there is a clear correlation between
-        HSC results and location.</p>
-
-        <br><h4><b>Proposal</b></h4></br>
-        <p>From the visual map data, our current graduation layout stable for most areas.
-          However, for some areas such as the South West, their amount of graduates is lacking compare from the other locations.
-          This can be seen problematic as family in the South-West would have to travel, or migrate, to the North for better education,
-          which can potentially reduce the flexibility of lifestyle.</p>
-          <p>From the graphical analysis of the data, it is evident that in the previous 2 years we have begun decreasing once more in graduation rate
-            (both females and males) even though prior to this, we were on a steady increase.
-            This proposes that the education system needs to be modernised or modified, as that different locations are lacking schools to
-            cater enough students. </p>
-          </div>
-          <div class='col-sm-6 text' w3-left>
-          <p>On the positive side, it is good to see that there are more female graduates whilst also there being more female population,
-            hence representing that both male and female parties are traveling on par in graduates. </p>
-
-            <p>One change that could be beneficial, is the introduction of more female schools as they currently have low amounts of schools,
-              hence such high concentrations of graduates from singular locations, in other words,
-              giving them more freedom in choice in choosing schools. </p>
-
-            <p>Finally, from the investigation of locations of top 10 schools in NSW and where the latte line is,
-              it is clear to see that the locations of private schools are often where the highest amount of graduates are.
-              This means that private’s schools often have a large contribution to the success of the quantity of graduates.
-              Hence a good change to benefit NSW is to cleverly utilises the space to spread out and create more private schools
-              around the state, in hope that it would raise the average amount of graduates. </p>
-
-            <p>Regarding the context of different locations, it is understandable that the average income of families will vary
-              hence affecting the accessibility of enrolling into a private school. Hence the lowering of private school fees is a
-              very reasonable proposal to be changed and lightened.</p>
-            </div>
-      </div>
-  </div>
-</div>
+								<div class="row feature">
+										<div>
+												<h3 class="m_7">more than 40</h3>
+										</div>
+										<div>
+											<div class="left_div">
+											   
+												<iframe id="map 2" width="100%" height="400px" src="map2/map2.html" frameborder="0" allowfullscreen></iframe>
+											</div>
+											<div class="right_div">
+												<h3 class="m_7"></h3>
+												<iframe id="map 4" width="100%" height="400px" src="map4/map4.html" frameborder="0" allowfullscreen></iframe>
+											</div>
+										</div>	
+								</div>
+								<p>As can be seen from the maps, the number of men over 40 is significantly higher than that of women. In 2011, almost every part of the population had more men than women. In 2016, although most regions have more males than females, the proportion of males than females are not as large as in 2011. We can see that men over 40 are all over New South Wales and women are concentrated in the southeast. By contrast, in 2011, we could infer that most women moved to the southeast.</p>
+								<div class="row feature">
 
 
+									<div class="left_div">
+										<img  width="100%" src="images/maleproportionbyage.jpg"/>
+									</div>	
+									
+									<div class="right_div">
+										<br>
+										<p>In 2011, the proportion of men in all age groups was lower than that of women, except that men aged 0-19 were more likely than women. In 2016, the proportion of men aged 0-19 was still higher than that of women, while the proportion of men aged 20-39 was almost equal, and the proportion of men in other age groups was generally lower than that of women.</p>
+										
+									</div>
+								</div>
+								
+								
+		</div>
 
+			
+			
+		
+		<!-- part: summary -->
+		<div class="border" ></div>	
+		<div id="summary">	
 
-
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-
-    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\linegraph.js"></script>
-    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\piegraph.js"></script>
-    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\fade.js"></script>
-    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\jquery-3.2.1.min.js"></script>
-    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\leaflet.js"></script>
-    <!-- Dataset -->
-    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\male15_19.js"></script>
-    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\mapscript.js"></script>
-    <script src="C:\Users\it\Documents\GitHub\code1230-assignment-2\js\markermap.js"></script>
+			<div class="row feature">
+					<h3>Summary</h3>
+					<p>First, the sustained growth of the total population from 2011 to 2016 indicates that the birth rate in New South Wales was higher than the death rate during these five years. On the second hand, from the direction of people's migration, the construction of the suburbs is getting better and better, and the population is more balanced in all places. Third, the maps of gender differences tell us that in 2016, there will be more men than women, but statistics show that there are fewer men than women, so we can conclude that women are clustered in the eastern part of the country. Indicating that the eastern direction is more suitable for women to live in.</p>
+					<br>
+					<br>
+					<br>
+					<br>
+					
+				</div>
+			</div>
+			
+			
+		</div>
+	
+	</div>	
+		
+	
 </body>
 </html>

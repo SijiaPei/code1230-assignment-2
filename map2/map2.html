@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset='utf-8' />
-    <title>MAP 2</title>
+    <title>MAP 1</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
     <script src='./data.js'></script>
@@ -20,10 +20,10 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2lqaWFwZWkiLCJhIjoiY2psZ210eDJ2MTllMjNwcGJpY
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
-    center: [151.004105, -33.813002], // starting position [lng, lat]
+    center: [150.004105, -32.813002], // starting position [lng, lat]
     pitch: 45,
     bearing: -17.6,
-    zoom: 9 // starting zoom
+    zoom: 6 // starting zoom
 });
 map.on('load',function(){
     
@@ -39,17 +39,17 @@ map.on('load',function(){
                    'property':'4',
                    "stops":[
                         [0, 'White'],
-                        [10, 'Orange'],
-                        [20, 'Red']
+                        [10, '#037B86'],
+                        [20, '#FFD000']
                     ] 
                },
                'fill-extrusion-height':{
                    'property':'3',                   
                    "stops":[
                     	[0.2, 0],
-                        [1, 2000],
-                        [10, 10000],
-                    	[20, 18000]
+                        [40, 20000],
+                        [80, 40000],
+                    	[200, 100000]
                     ]
                },
                'fill-extrusion-opacity': 0.9
